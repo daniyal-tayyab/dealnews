@@ -20,25 +20,6 @@ import ad1 from "../../images/ad.png";
 import ad2 from "../../images/ad2.png";
 
 const Home = () => {
-  // useEffect(() => {
-  //   fetch("http://localhost:8000/api/user/signin", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       email: "dani@gmail.com",
-  //       password: "12345",
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (!res.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((res) => console.log("RESPONSE:", res));
-  // }, []);
   return (
     <Container>
       <Banner />

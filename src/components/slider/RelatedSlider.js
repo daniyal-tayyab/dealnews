@@ -30,10 +30,9 @@ const RelatedSlider = () => {
     <Container>
       <SliderWrapper ref={sliderRef}>
         {tempProducts &&
-          tempProducts.map(
-            (item, index) =>
-              index > 4 && <RelatedCard key={index} item={item} />
-          )}
+          tempProducts.map((item, index) => (
+            <RelatedCard key={index} item={item} />
+          ))}
       </SliderWrapper>
       <PrevButton onClick={handlePrevClick}>
         <NextWrapper>
