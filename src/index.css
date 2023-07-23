@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media (max-width: 37.5em) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+ul {
+  list-style: none;
+}
+
+.active {
+  border-bottom: 2px solid #2c65af;
+}

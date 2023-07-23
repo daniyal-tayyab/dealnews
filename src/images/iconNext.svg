@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" style="enable-background:new 0 0 34 34.1;" version="1.1" viewBox="0 0 34 34.1" x="0px" y="0px">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_00000094589457538510936140000014506364976553863084_);}
+	.st1{fill:none;stroke:#FFFFFF;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;}
+	.st2{clip-path:url(#SVGID_00000170276944048218777030000007007104532846260108_);}
+	.st3{clip-path:url(#SVGID_00000151511928818551185720000017432087904704499382_);}
+	.st4{fill:#2B2F34;}
+	.st5{fill:#FFFFFF;}
+</style>
+<g id="filters" transform="translate(-19 -18.5)">
+	<g id="icon-entity" transform="translate(19 18.5)">
+		<g id="outline" transform="translate(0 0)">
+			<g id="Group_39149">
+				<g>
+					<g>
+						<g>
+							<defs>
+								<rect height="23.7" id="SVGID_1_" width="22.4" x="0.8" y="0.1"/>
+							</defs>
+							<clipPath id="SVGID_00000148660378903586957730000010085976612014687642_">
+								<use href="#SVGID_1_" style="overflow:visible;"/>
+							</clipPath>
+							<g id="Group_26929" style="clip-path:url(#SVGID_00000148660378903586957730000010085976612014687642_);">
+								<path class="st1" d="M22.6,6.3L12,12L1.4,6.4L12,0.8L22.6,6.3z" id="Path_29596"/>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+			<line class="st1" id="Line_237" x1="17.5" x2="7" y1="9" y2="3.4"/>
+			<line class="st1" id="Line_238" x1="6.6" x2="17.2" y1="9.1" y2="3.5"/>
+			<g id="Group_39150">
+				<g>
+					<g>
+						<g>
+							<defs>
+								<rect height="23.7" id="SVGID_00000049210166639552865640000008409314020342488711_" width="22.4" x="0.8" y="0.1"/>
+							</defs>
+							<clipPath id="SVGID_00000089534148773857530930000008884732840428773272_">
+								<use href="#SVGID_00000049210166639552865640000008409314020342488711_" style="overflow:visible;"/>
+							</clipPath>
+							<g id="Group_26931" style="clip-path:url(#SVGID_00000089534148773857530930000008884732840428773272_);">
+								<path class="st1" d="M22.6,6.3v11.3L12,23.2L1.4,17.6V6.4" id="Path_29597"/>
+								<line class="st1" id="Line_145" x1="12" x2="12" y1="12" y2="23.2"/>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+			<line class="st1" id="Line_239" x1="6.6" x2="6.6" y1="9.1" y2="20.4"/>
+			<line class="st1" id="Line_240" x1="17.5" x2="17.5" y1="9" y2="20.3"/>
+			<g id="Group_39151">
+				<g>
+					<g>
+						<g>
+							<defs>
+								<rect height="23.7" id="SVGID_00000054260067162120767940000011552412458599130757_" width="22.4" x="0.8" y="0.1"/>
+							</defs>
+							<clipPath id="SVGID_00000091735020585950998600000006644141079408648338_">
+								<use href="#SVGID_00000054260067162120767940000011552412458599130757_" style="overflow:visible;"/>
+							</clipPath>
+							<g id="Group_26933" style="clip-path:url(#SVGID_00000091735020585950998600000006644141079408648338_);">
+								<line class="st1" id="Line_148" x1="22.6" x2="12" y1="11.8" y2="17.7"/>
+								<line class="st1" id="Line_149" x1="1.4" x2="12" y1="11.8" y2="17.7"/>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<path class="st4" d="M4,0.1h26c2.2,0,4,1.8,4,4v26c0,2.2-1.8,4-4,4H4c-2.2,0-4-1.8-4-4v-26&#xA;	C0,1.9,1.8,0.1,4,0.1z" id="Rectangle_34175"/>
+<polygon class="st5" points="21.3,15.8 21.3,15.8 14.7,9.1 13,10.8 19.7,17.4 13,24.1 14.7,25.8 23,17.4"/>
+</svg>
