@@ -1,11 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { colors } from "../../styles/colors";
 
 import { AiOutlineHeart } from "react-icons/ai";
 
 import { SlOptionsVertical } from "react-icons/sl";
+
+import { BsLink } from "react-icons/bs";
+import { BsFillBellFill } from "react-icons/bs";
+import { BsShareFill } from "react-icons/bs";
+import { PiWarningOctagonFill } from "react-icons/pi";
+
 import { alignCenter, flexColumn } from "../../styles/common";
+
+const iconCommon = css`
+  color: ${colors.bluePrimary};
+`;
+
+export const LinkIcon = styled.div`
+  ${iconCommon}
+`;
+export const BellIcon = styled.div`
+  ${iconCommon}
+`;
+export const ShareIcon = styled.div`
+  ${iconCommon}
+`;
+export const WarnIcon = styled.div`
+  ${iconCommon}
+`;
 
 export const Container = styled.div`
   padding: 1rem;
@@ -221,10 +244,35 @@ export const TopMenuContainer = styled.div`
   height: 20px;
   ${alignCenter}
   justify-content: flex-end;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const VerticalMenuIcon = styled(SlOptionsVertical)`
   font-size: 1.5rem;
   color: ${colors.bluePrimary};
   cursor: pointer;
+`;
+
+export const VerticalSubMenu = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  width: 200px;
+  height: 300px;
+  background-color: ${colors.white};
+  z-index: 100000000;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const VerticalItem = styled.div`
+  display: flex;
+  column-gap: 10px;
+  padding: 1rem 2rem;
+  align-items: center;
+  color: ${colors.bluePrimary};
 `;

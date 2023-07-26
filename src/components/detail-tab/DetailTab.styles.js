@@ -53,6 +53,17 @@ export const BreadCrumbItem = styled.p`
 export const TagsContainer = styled.div`
   display: flex;
   margin: 1rem 0;
+  overflow-x: auto;
+  padding-bottom: 5px;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    background-color: darkgrey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    cursor: pointer;
+  }
 
   div {
     margin-right: 1rem;
@@ -61,6 +72,8 @@ export const TagsContainer = styled.div`
 
 export const Tag = styled.div`
   width: fit-content;
+  block-size: fit-content;
+  min-width: max-content;
   padding: 5px 8px;
   border-radius: 15px;
   border: 1px solid ${colors.veryLighGrayII};
@@ -96,6 +109,11 @@ export const ListItem = styled.div`
 
   &:not(:last-child) {
     margin-bottom: 2rem;
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
   }
 `;
 

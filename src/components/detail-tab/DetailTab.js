@@ -24,8 +24,10 @@ import {
   splitStringByComma,
 } from "../../utils/calculatehour";
 
+import staffIconGray from "../../images/staff_pick_gray.png";
+
 const DetailTab = ({ item }) => {
-  const { rating, breadcrumbs, key_words, created_at } = item;
+  const { rating, breadcrumbs, key_words, created_at, staff_pick } = item;
 
   const breadcrumbsArray = splitStringByComma(breadcrumbs);
   const keyWords = splitStringByComma(key_words);
@@ -49,6 +51,12 @@ const DetailTab = ({ item }) => {
         <ListItem>
           <FireIcon /> <span>Popularity {rating}/5</span>
         </ListItem>
+        {staff_pick && (
+          <ListItem>
+            <img src={staffIconGray} alt="staff" />
+            <span>Staff Pick</span>
+          </ListItem>
+        )}
       </DetailList>
       <DetailContent>
         <BreadCrumsContainer>

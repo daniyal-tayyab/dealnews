@@ -21,6 +21,12 @@ import {
   TabPanel,
   TopMenuContainer,
   VerticalMenuIcon,
+  VerticalSubMenu,
+  LinkIcon,
+  BellIcon,
+  WarnIcon,
+  ShareIcon,
+  VerticalItem,
 } from "./DealCard.styles";
 
 import { BsArrowUp } from "react-icons/bs";
@@ -30,11 +36,21 @@ import {
   splitStringByComma,
 } from "../../utils/calculatehour";
 
+import fiveStart from "../../images/five.png";
+import fourStar from "../../images/four.png";
+import threeStar from "../../images/three.png";
+import twoStart from "../../images/two.png";
+import oneStar from "../../images/one.png";
+import stffIcon from "../../images/staff_pick.png";
+
+import verticlMenuArray from "../../utils/verticalMenuOption";
+
 const DealCard = ({ item }) => {
   const { user } = useContext(UserContext);
   const [showMore, setShowMore] = useState(false);
   const [activeTab, setActiveTab] = useState("tab1");
   const [showMenu, setShowMenu] = useState(false);
+  const [showVerticalSubMenu, setShowVerticalSubMenu] = useState(false);
 
   const {
     product_name,
@@ -45,6 +61,8 @@ const DealCard = ({ item }) => {
     product_details,
     features,
     image,
+    rating,
+    staff_pick,
   } = item;
 
   const productDetailArray = splitStringByComma(product_details);
@@ -53,11 +71,51 @@ const DealCard = ({ item }) => {
   const toggleShowMore = () => setShowMore((prevState) => !prevState);
   const handleActiveTab = (tab) => setActiveTab(tab);
   const toggleShowMenu = () => setShowMenu((prevState) => !prevState);
+  const toggleVerticalSubMenu = () =>
+    setShowVerticalSubMenu((prevState) => !prevState);
 
   return (
     <Container>
       <TopMenuContainer>
-        <VerticalMenuIcon />
+        {staff_pick && <img src={stffIcon} alt="staff icon" />}
+        {rating && (
+          <img
+            src={
+              rating === 5
+                ? fiveStart
+                : rating === 4
+                ? fourStar
+                : rating === 3
+                ? threeStar
+                : rating === 2
+                ? twoStart
+                : oneStar
+            }
+            alt="rating"
+          />
+        )}
+        <VerticalMenuIcon
+          onMouseEnter={toggleVerticalSubMenu}
+          onMouseLeave={toggleVerticalSubMenu}
+        />
+        {/* {showVerticalSubMenu && (
+          <VerticalSubMenu>
+            {verticlMenuArray.map((item, index) => {
+              <VerticalItem key={index}>
+                {item.type === "link" ? (
+                  <LinkIcon />
+                ) : item.type === "bell" ? (
+                  <BellIcon />
+                ) : item.type === "warn" ? (
+                  <WarnIcon />
+                ) : (
+                  <ShareIcon />
+                )}
+                <p>{item.title}</p>
+              </VerticalItem>;
+            })}
+          </VerticalSubMenu>
+        )} */}
       </TopMenuContainer>
       <Upper more={showMore}>
         <UpperLeft>
