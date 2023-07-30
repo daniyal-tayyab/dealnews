@@ -27,7 +27,15 @@ import {
 import staffIconGray from "../../images/staff_pick_gray.png";
 
 const DetailTab = ({ item }) => {
-  const { rating, breadcrumbs, key_words, created_at, staff_pick } = item;
+  const {
+    rating,
+    breadcrumbs,
+    key_words,
+    created_at,
+    staff_pick,
+    category,
+    id,
+  } = item;
 
   const breadcrumbsArray = splitStringByComma(breadcrumbs);
   const keyWords = splitStringByComma(key_words);
@@ -80,7 +88,7 @@ const DetailTab = ({ item }) => {
         </BreadCrumsContainer>
         <SliderContainer>
           Related Offers
-          <RelatedSlider />
+          <RelatedSlider category={category} id={id} />
         </SliderContainer>
       </DetailContent>
     </Container>

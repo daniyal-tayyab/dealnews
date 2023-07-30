@@ -37,11 +37,11 @@ const SignupForm = ({ handleType, handleClose }) => {
         "https://dealnews-server-a6d51b37a008.herokuapp.com/api/user/signup",
         formFields
       );
-      console.log(response.data.token);
       const token = response.data.token;
       Cookies.remove("jwtToken");
       setUser(null);
       Cookies.set("jwtToken", token, { expires: 1 * 3600 * 1000 });
+
       let variant = "success";
       enqueueSnackbar("User created successfully!", { variant });
       setUser(formFields.user_name);

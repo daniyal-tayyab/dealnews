@@ -108,6 +108,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const value = {
+    products,
     tempProducts,
     blogs,
     handleSelectedCategory,

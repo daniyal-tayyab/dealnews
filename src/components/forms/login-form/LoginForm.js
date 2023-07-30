@@ -39,20 +39,21 @@ const LoginForm = ({ handleType, handleClose }) => {
         formFields
       );
       const token = response.data.token;
-      console.log(jwt_decode(token));
+
       if (!token) {
         let variant = "error";
         enqueueSnackbar("Un-Authorized User", { variant });
       }
+
       let variant = "success";
       enqueueSnackbar("User Login successfully", { variant });
+
       Cookies.set("jwtToken", token, { expires: 1 * 3600 * 1000 });
       const user = jwt_decode(token).user_name;
       setUser(user);
       resetFormFields();
       handleClose();
     } catch (err) {
-      console.log("user sign in failed", err);
       let variant = "error";
       enqueueSnackbar("Wrong email or password", { variant });
     }

@@ -12,9 +12,12 @@ import {
 } from "./RelatedSlider.styles";
 import RelatedCard from "../related-card/RelatedCard";
 
-const RelatedSlider = () => {
-  const { tempProducts } = useContext(ProductsContext);
+const RelatedSlider = ({ category, id }) => {
+  const { tempProducts, products } = useContext(ProductsContext);
   const sliderRef = useRef(null);
+  const relatedProducts = products.filter(
+    (product) => product.category === category && product.id !== id
+  );
 
   const handleNextClick = () => {
     let width = sliderRef.current.clientWidth;
@@ -30,7 +33,7 @@ const RelatedSlider = () => {
     <Container>
       <SliderWrapper ref={sliderRef}>
         {tempProducts &&
-          tempProducts.map((item, index) => (
+          relatedProducts.map((item, index) => (
             <RelatedCard key={index} item={item} />
           ))}
       </SliderWrapper>

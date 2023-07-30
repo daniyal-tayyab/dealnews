@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
+import { ProductsContext } from "../../context/products.context";
 
 import Filter from "../../components/filter/Filter";
 import ProductSlider from "../../components/productSlider/ProductSlider";
@@ -20,6 +21,7 @@ import ad1 from "../../images/ad.png";
 import ad2 from "../../images/ad2.png";
 
 const Home = () => {
+  const { tempProducts } = useContext(ProductsContext);
   return (
     <Container>
       <Banner />
@@ -28,7 +30,7 @@ const Home = () => {
           <Filter />
           <ProductSlider />
           <Deals />
-          <Footer />
+          {tempProducts && <Footer />}
         </MainContent>
         <Sidebar>
           <Ad source={ad2} />
