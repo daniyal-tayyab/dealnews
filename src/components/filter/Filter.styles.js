@@ -11,31 +11,6 @@ export const Container = styled.div`
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
   margin-left: 1rem;
   margin-right: 370px;
-
-  @media (min-width: 1450px) {
-    margin-right: 350px;
-  }
-
-  @media (min-width: 1500px) {
-    margin-right: 300px;
-  }
-
-  @media (min-width: 1600px) {
-    margin-right: 200px;
-  }
-
-  @media (min-width: 1700px) {
-    margin-right: 100px;
-  }
-
-  @media (min-width: 1800px) {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 900px) {
-    margin-right: 0px;
-    width: 94vw;
-  }
 `;
 
 export const FilterContainer = styled.div`
