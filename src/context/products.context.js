@@ -69,13 +69,14 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     const getProductsFromServer = async () => {
       try {
-        const products = await axios(
-          "https://dealnews-server-a6d51b37a008.herokuapp.com/api/products"
-        );
+        const products = await axios("http://localhost:8000/api/products");
+        // const products = await axios(
+        //   "https://dealnews-server-a6d51b37a008.herokuapp.com/api/products"
+        // );
         setProducts(products.data.data);
         setTempProducts(products.data.data);
       } catch (err) {
-        setError("Failed to fetch from server");
+        setError("Failed to fetch products from server");
         setProducts(dummyProducts);
         setTempProducts(dummyProducts);
       }
@@ -83,12 +84,13 @@ export const ProductsProvider = ({ children }) => {
 
     const getBlogsFromServer = async () => {
       try {
-        const blogs = await axios(
-          "https://dealnews-server-a6d51b37a008.herokuapp.com/api/blogs"
-        );
+        const blogs = await axios("http://localhost:8000/api/blogs");
+        // const blogs = await axios(
+        //   "https://dealnews-server-a6d51b37a008.herokuapp.com/api/blogs"
+        // );
         setBlogs(blogs.data.data);
       } catch (err) {
-        setError("Failed to fetch from server");
+        setError("Failed to fetch blogs from server");
         setBlogs(dummyBlogs);
       }
     };
