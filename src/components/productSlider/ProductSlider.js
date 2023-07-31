@@ -15,6 +15,11 @@ const Container = styled.div`
   overflow: hidden;
   margin-right: 370px;
   margin-left: 1rem;
+
+  @media (max-width: 900px) {
+    margin-right: 0px;
+    width: 94vw;
+  }
 `;
 
 const ProductSlider = () => {
