@@ -70,7 +70,7 @@ export const ProductsProvider = ({ children }) => {
     const getProductsFromServer = async () => {
       try {
         const products = await axios(
-          "https://dealnews-server-a6d51b37a008.herokuapp.com/api/products"
+          "https://dealnews-004572de8762.herokuapp.com/api/products"
         );
         setProducts(products.data.data);
         setTempProducts(products.data.data);
@@ -84,7 +84,7 @@ export const ProductsProvider = ({ children }) => {
     const getBlogsFromServer = async () => {
       try {
         const blogs = await axios(
-          "https://dealnews-server-a6d51b37a008.herokuapp.com/api/blogs"
+          "https://dealnews-004572de8762.herokuapp.com/api/blogs"
         );
         setBlogs(blogs.data.data);
       } catch (err) {

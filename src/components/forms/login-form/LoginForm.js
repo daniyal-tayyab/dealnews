@@ -35,7 +35,7 @@ const LoginForm = ({ handleType, handleClose }) => {
 
     try {
       const response = await axios.post(
-        "https://dealnews-server-a6d51b37a008.herokuapp.com/api/user/signin",
+        "https://dealnews-004572de8762.herokuapp.com/api/user/signin",
         formFields
       );
       const token = response.data.token;
