@@ -12,59 +12,17 @@ export const ProductsContext = createContext({
   setTempProducts: () => null,
   error: null,
   setError: () => null,
+  category: null,
+  setCategory: () => null,
 });
-
-const filterOnCategory = (products, category) => {
-  let tempProducts = [...products];
-  if (category === "staff pick") {
-    tempProducts = tempProducts.filter((product) => product.staff_pick !== "");
-    console.log("STAFF PICK PRODUCTS:", tempProducts);
-  } else if (category === "include expire") {
-    tempProducts = tempProducts.filter((product) => product.expired === 1);
-    console.log("EXPIRED PRODUCTS:", tempProducts);
-  } else {
-    tempProducts = tempProducts.filter(
-      (product) => product.category === category
-    );
-  }
-
-  if (tempProducts.length === 0) {
-    return {
-      products: products,
-      error: `No products found in ${category} category`,
-    };
-  }
-  return {
-    products: tempProducts,
-    error: null,
-  };
-};
-
-const filterHandler = (tempProducts, feat) => {
-  const copyProducts = [...tempProducts];
-  switch (feat) {
-    case "price":
-      return copyProducts.sort(
-        (a, b) => parseFloat(a.price) - parseFloat(b.price)
-      );
-    case "recent":
-      return copyProducts.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at)
-      );
-    case "popularity":
-      return copyProducts.sort((a, b) => b.rating - a.rating);
-    case "feature":
-      return copyProducts.sort((a, b) => a.id - b.id);
-    default:
-      return [];
-  }
-};
 
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState(null);
   const [blogs, setBlogs] = useState(null);
   const [tempProducts, setTempProducts] = useState(null);
   const [error, setError] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [sortBy, setSortBy] = useState(null);
 
   useEffect(() => {
     const getProductsFromServer = async () => {
@@ -72,6 +30,7 @@ export const ProductsProvider = ({ children }) => {
         const products = await axios(
           "https://dealnews-004572de8762.herokuapp.com/api/products"
         );
+        // const products = await axios("http://localhost:8000/api/products");
         setProducts(products.data.data);
         setTempProducts(products.data.data);
       } catch (err) {
@@ -97,14 +56,61 @@ export const ProductsProvider = ({ children }) => {
     getBlogsFromServer();
   }, []);
 
+  useEffect(() => {
+    const getProductsFromServer = async (category) => {
+      setTempProducts(null);
+      try {
+        const response = await axios(
+          `https://dealnews-004572de8762.herokuapp.com/api/products/${category}`
+        );
+        // const response = await axios(
+        //   `http://localhost:8000/api/products/${category}`
+        // );
+        if (response.data.data.length === 0) {
+          setTempProducts(products);
+          setError(`No products found in ${category} category`);
+          return;
+        }
+        setTempProducts(response.data.data);
+        setError(null);
+      } catch (err) {
+        setError(`No products found in ${category} category`);
+        setTempProducts(products);
+      }
+    };
+
+    if (category) {
+      getProductsFromServer(category);
+    }
+  }, [category]);
+
+  useEffect(() => {
+    const getSortedProducts = async (feat) => {
+      setTempProducts(null);
+      try {
+        const response = await axios(
+          `https://dealnews-004572de8762.herokuapp.com/api/products/sortby/${feat}`
+        );
+        // const response = await axios(
+        //   `http://localhost:8000/api/products/sortby/${feat}`
+        // );
+        setTempProducts(response.data.data);
+      } catch (error) {
+        setError(`Failed to sort products`);
+        setTempProducts(products);
+      }
+    };
+    if (sortBy) {
+      getSortedProducts(sortBy);
+    }
+  }, [sortBy]);
+
   const handleSelectedCategory = (category) => {
-    const status = filterOnCategory(products, category);
-    setTempProducts(status.products);
-    setError(status.error);
+    setCategory(category);
   };
 
   const handleFilter = (feat) => {
-    setTempProducts(filterHandler(tempProducts, feat));
+    setSortBy(feat);
   };
 
   const value = {
