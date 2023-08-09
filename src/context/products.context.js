@@ -1,7 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import dummyProducts from "../utils/products";
-import dummyBlogs from "../utils/blogs";
 
 export const ProductsContext = createContext({
   products: null,
@@ -42,12 +40,9 @@ export const ProductsProvider = ({ children }) => {
         setTempProducts((prevProducts) =>
           offset === 0 ? newProducts : [...prevProducts, ...newProducts]
         );
-        console.log(newProducts);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch products from server");
-        setProducts(dummyProducts);
-        setTempProducts(dummyProducts);
         setLoading(false);
       }
     };
@@ -60,7 +55,6 @@ export const ProductsProvider = ({ children }) => {
         setBlogs(blogs.data.data);
       } catch (err) {
         setError("Failed to fetch blogs from server");
-        setBlogs(dummyBlogs);
       }
     };
 
@@ -100,7 +94,6 @@ export const ProductsProvider = ({ children }) => {
         const response = await axios(
           `https://dealnews-004572de8762.herokuapp.com/api/products/sortby/${feat}`
         );
-
         setTempProducts(response.data.data);
       } catch (error) {
         setError(`Failed to sort products`);
