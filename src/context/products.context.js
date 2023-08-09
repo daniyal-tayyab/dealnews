@@ -14,6 +14,8 @@ export const ProductsContext = createContext({
   setError: () => null,
   category: null,
   setCategory: () => null,
+  offset: null,
+  setOffset: () => null,
 });
 
 export const ProductsProvider = ({ children }) => {
@@ -23,20 +25,30 @@ export const ProductsProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [category, setCategory] = useState(null);
   const [sortBy, setSortBy] = useState(null);
+  const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getProductsFromServer = async () => {
+      setLoading(true);
       try {
-        const products = await axios(
-          "https://dealnews-004572de8762.herokuapp.com/api/products"
+        const response = await axios(
+          `https://dealnews-004572de8762.herokuapp.com/api/products/limit/${offset}`
         );
-        // const products = await axios("http://localhost:8000/api/products");
-        setProducts(products.data.data);
-        setTempProducts(products.data.data);
+        const newProducts = response.data.data;
+        setProducts((prevProducts) =>
+          offset === 0 ? newProducts : [...prevProducts, ...newProducts]
+        );
+        setTempProducts((prevProducts) =>
+          offset === 0 ? newProducts : [...prevProducts, ...newProducts]
+        );
+        console.log(newProducts);
+        setLoading(false);
       } catch (err) {
         setError("Failed to fetch products from server");
         setProducts(dummyProducts);
         setTempProducts(dummyProducts);
+        setLoading(false);
       }
     };
 
@@ -54,7 +66,7 @@ export const ProductsProvider = ({ children }) => {
 
     getProductsFromServer();
     getBlogsFromServer();
-  }, []);
+  }, [offset]);
 
   useEffect(() => {
     const getProductsFromServer = async (category) => {
@@ -63,9 +75,6 @@ export const ProductsProvider = ({ children }) => {
         const response = await axios(
           `https://dealnews-004572de8762.herokuapp.com/api/products/${category}`
         );
-        // const response = await axios(
-        //   `http://localhost:8000/api/products/${category}`
-        // );
         if (response.data.data.length === 0) {
           setTempProducts(products);
           setError(`No products found in ${category} category`);
@@ -91,9 +100,7 @@ export const ProductsProvider = ({ children }) => {
         const response = await axios(
           `https://dealnews-004572de8762.herokuapp.com/api/products/sortby/${feat}`
         );
-        // const response = await axios(
-        //   `http://localhost:8000/api/products/sortby/${feat}`
-        // );
+
         setTempProducts(response.data.data);
       } catch (error) {
         setError(`Failed to sort products`);
@@ -104,6 +111,8 @@ export const ProductsProvider = ({ children }) => {
       getSortedProducts(sortBy);
     }
   }, [sortBy]);
+
+  const handleOffset = (offset) => setOffset(offset);
 
   const handleSelectedCategory = (category) => {
     setCategory(category);
@@ -120,6 +129,9 @@ export const ProductsProvider = ({ children }) => {
     handleSelectedCategory,
     handleFilter,
     error,
+    handleOffset,
+    offset,
+    loading,
   };
 
   return (
