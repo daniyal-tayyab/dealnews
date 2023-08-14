@@ -1,6 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+import dummyProducts from "../utils/products";
+import dummyBlogs from "../utils/blogs";
+
 export const ProductsContext = createContext({
   products: null,
   setProducts: () => null,
@@ -43,6 +46,8 @@ export const ProductsProvider = ({ children }) => {
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch products from server");
+        setProducts(dummyProducts);
+        setTempProducts(dummyProducts);
         setLoading(false);
       }
     };
@@ -55,6 +60,7 @@ export const ProductsProvider = ({ children }) => {
         setBlogs(blogs.data.data);
       } catch (err) {
         setError("Failed to fetch blogs from server");
+        setBlogs(dummyBlogs);
       }
     };
 
